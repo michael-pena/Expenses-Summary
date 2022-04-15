@@ -1,5 +1,5 @@
 import './App.css';
-import FileUploader from './components/FIleUploader/FileUploader';
+import FileUploader from './components/FileUploader/FileUploader';
 import CardBoxContainer from './components/UI/CardBoxContainer';
 
 function App() {

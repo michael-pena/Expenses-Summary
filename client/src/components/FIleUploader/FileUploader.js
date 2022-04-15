@@ -6,8 +6,13 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import CardBoxContainer from "../UI/CardBoxContainer";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
 import Input from "@mui/material/Input";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 const FileUploader = () => {
   const [value, setValue] = React.useState(new Date());
@@ -20,41 +25,50 @@ const FileUploader = () => {
     padding: "1rem",
     borderRadius: "12px",
     ".form-element": {
-        marginTop: "3rem",        
-    }
+      marginTop: "3rem",
+    },
   });
 
   return (
     <CardBoxContainer>
-      <h1>Upload New CSV Statement File</h1>
-
-      <form>
-        <FormSection>
-          <div className="form-element">
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                views={["year", "month"]}
-                label="Year and Month"
-                minDate={new Date("2012-03-01")}
-                maxDate={new Date("2023-06-01")}
-                value={value}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} helperText={null} />
-                )}
-              />
-            </LocalizationProvider>
-          </div>
-          <div className="form-element">
-            <Input type="file" accept=".csv" id="contained-button-file" />            
-          </div>
-          <div className="form-element">
-          <input type="submit" value="Submit"></input>
-          </div>
-        </FormSection>
-      </form>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography variant="h6">Upload New CSV Statement File</Typography>
+        </AccordionSummary> 
+        <AccordionDetails>
+        <form>
+          <FormSection>
+            <div className="form-element">
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  views={["year", "month"]}
+                  label="Year and Month"
+                  minDate={new Date("2012-03-01")}
+                  maxDate={new Date("2023-06-01")}
+                  value={value}
+                  onChange={(newValue) => {
+                    setValue(newValue);
+                  }}
+                  renderInput={(params) => (
+                    <TextField {...params} helperText={null} />
+                  )}
+                />
+              </LocalizationProvider>
+            </div>
+            <div className="form-element">
+              <Input type="file" accept=".csv" id="contained-button-file" />
+            </div>
+            <div className="form-element">
+              <input type="submit" value="Submit"></input>
+            </div>
+          </FormSection>
+        </form>
+        </AccordionDetails>   
+      </Accordion>
     </CardBoxContainer>
   );
 };
