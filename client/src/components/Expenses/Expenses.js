@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from '@mui/material/IconButton';
-
+import CardBoxContainer from "../UI/CardBoxContainer";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -25,6 +25,7 @@ const rows = [
 
 const Expenses = () => {
   return (
+    <CardBoxContainer>
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
@@ -66,6 +67,7 @@ const Expenses = () => {
         </TableBody>
       </Table>
     </TableContainer>
+    </CardBoxContainer>
   );
 };
 
